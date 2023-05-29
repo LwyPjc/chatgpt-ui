@@ -6,7 +6,7 @@ definePageMeta({
 })
 
 const { $i18n } = useNuxtApp()
-const runtimeConfig = useRuntimeConfig()
+const runtimeConfig = useRuntimeConfig()  
 const drawer = useDrawer()
 const route = useRoute()
 const conversation = ref(getDefaultConversationData())
@@ -37,7 +37,9 @@ const createNewConversation = () => {
 
 
 onMounted(async () => {
+  console.log('param.id==',route.param.id);
   if (route.params.id) {
+    console.log('onmounted--id',route.params.id);
     conversation.value.loadingMessages = true
     await loadConversation()
     await loadMessage()
