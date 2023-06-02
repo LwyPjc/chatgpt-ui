@@ -10,6 +10,8 @@
             v-bind="props"
             variant="tonal"
         >
+        <!--  -->
+        <!-- <v-btn  color="grey-lighten-3" block> {{ content }}</v-btn> -->
           <v-card-text class="text-center">
             {{ content }}
           </v-card-text>

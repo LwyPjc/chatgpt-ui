@@ -93,12 +93,16 @@ const passwordInputType = ref('password')
 const submit = async () => {
   errorMsg.value = null
   const { valid } = await signInForm.value.validate()
+  console.log('submit--valid--',valid)
   if (valid) {
+    console.log('formData--',formData.value);
+    let loginBody={username:formData.value.username,password:formData.value.password}
     submitting.value = true
-    const { data, error } = await useFetch('/api/account/login/', {
+    const { data, error } = await useMyFetch('/api/account/login', {
       method: 'POST',
-      body: JSON.stringify(formData.value)
+      body: loginBody
     })
+    console.log('formData--data--',data);
     submitting.value = false
     if (error.value) {
       if (error.value.status === 400) {

@@ -4,6 +4,7 @@ import {useDrawer} from "../composables/states";
 
 const route = useRoute()
 const { $i18n, $settings } = useNuxtApp()
+console.log('navigation--setting--',$settings.open_api_key_setting)
 const colorMode = useColorMode()
 const {mdAndUp} = useDisplay()
 const drawerPermanent = computed(() => {
@@ -19,6 +20,7 @@ const themes = ref([
 const setTheme = (theme) => {
   colorMode.preference = theme
 }
+// 换成自己端口
 const feedback = () => {
   window.open('https://github.com/WongSaang/chatgpt-ui/issues', '_blank')
 }
@@ -176,7 +178,7 @@ const loadConversations = async () => {
 }
 
 const signOut = async () => {
-  const { data, error } = await useFetch('/api/account/logout/', {
+  const { data, error } = await useFetch('/api/account/logout', {
     method: 'POST'
   })
   if (!error.value) {
@@ -185,7 +187,10 @@ const signOut = async () => {
 }
 
 onNuxtReady(async () => {
+  console.log('before--navigationDrawer---onNuxtReady--loadConversations==');
   loadConversations()
+  console.log('after--navigationDrawer---onNuxtReady--loadConversations==');
+
 })
 
 const drawer = useDrawer()

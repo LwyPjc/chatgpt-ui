@@ -45,7 +45,8 @@ const submit = async () => {
   const { valid } = await resetForm.value.validate()
   if (valid) {
     submitting.value = true
-    const { data, error } = await useFetch('/api/account/password/change/', {
+    // todo
+    const { data, error } = await useFetch('/api/account/password/change', {
       method: 'POST',
       body: JSON.stringify(formData.value)
     })

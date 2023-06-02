@@ -8,13 +8,13 @@ export const getDefaultConversationData = () => {
         loadingMessages: false,
     }
 }
-
+//todo
 export const getConversations = async () => {
-    const { data, error } = await useAuthFetch('/api/chat/conversations/')
+    const { data, error } = await useAuthFetch('/api/chat/conversations')
     if (!error.value) {
         return data.value
     }
-    return []
+    return [{id:0,loadingMessages:true,topic:'测试对话',messages:[{is_bot:false}]}]
 }
 
 export const addConversation = (conversation) => {
@@ -47,7 +47,7 @@ export const genTitle = async (conversationId) => {
 }
 
 export const fetchUser = async () => {
-    return useMyFetch('/api/account/user/')
+    return useMyFetch('/api/account/user')
 }
 
 export const setUser = (userData) => {

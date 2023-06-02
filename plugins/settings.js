@@ -11,10 +11,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     nuxtApp.hook('app:created', async () => {
         let settings = {}
 
-        const { data, error } = await useAuthFetch('/api/chat/settings/', {
+        const { data, error } = await useAuthFetch('/api/chat/settings', {
             method: 'GET',
         })
-
+        console.log('settings---data--',data,'--error--',error);
         if (!error.value) {
             settings = transformData(data.value)
         }
