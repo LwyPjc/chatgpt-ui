@@ -1,7 +1,7 @@
 import { createProxyMiddleware } from 'http-proxy-middleware'
 export default defineEventHandler(async (event) => {
     console.log("process.env..",process.env.SERVER_DOMAIN);
-    
+
     await new Promise((resolve, reject) => {
         createProxyMiddleware({
             target: process.env.SERVER_DOMAIN,
